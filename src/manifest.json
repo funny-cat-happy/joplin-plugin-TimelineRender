@@ -2,11 +2,11 @@
 	"manifest_version": 1,
 	"id": "joplin-plugin-TimelineRender",
 	"app_min_version": "2.8",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"name": "joplin-plugin-TimelineRender",
 	"description": "render the timeline in the markdown",
 	"author": "funny-cat",
-	"homepage_url": "",
+	"homepage_url": "https://discourse.joplinapp.org/t/new-plugin-timeline/29408",
 	"repository_url": "https://github.com/funny-cat-happy/joplin-plugin-TimelineRender.git",
 	"keywords": [],
 	"categories": []

@@ -30,7 +30,7 @@
     background-size: 8px 5px;
     background-repeat: repeat-y;
   }
-  .timeline-dot {
+  .timeline-dot-past {
     left: var(--left);
     width: 15px;
     height: 15px;
@@ -51,6 +51,19 @@
     border-radius: 50%;
     box-shadow: 0 0 0 1px #d8d8d8;
     background: #f0a80d;
+    text-align: center;
+    top: 0;
+    line-height: 40px;
+    margin-left: -3.5px;
+  }
+  .timeline-dot-future {
+    left: var(--left);
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #d8d8d8;
+    background: #f55104;
     text-align: center;
     top: 0;
     line-height: 40px;

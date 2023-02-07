@@ -78,13 +78,17 @@ function insertElem(container,nodes)
         let timelineLeftElem=document.createElement("div");
         timelineLeftElem.className="timeline-left";
         let timelineDotElem=document.createElement("div");
-        timelineDotElem.className="timeline-dot";
+        timelineDotElem.className="timeline-dot-past";
         if(typeof(nodes[index].time)=="object")
         {
-            timelineLeftElem.innerHTML=`<p>${nodes[index].time.toLocaleDateString().replace(/\//g,"-")}</p>`;
+            timelineLeftElem.innerHTML=`<p>${nodes[index].time.getFullYear()}-${nodes[index].time.getMonth()+1}-${nodes[index].time.getDate()}</p>`;
             if (nodes[index].time.setHours(0,0,0,0)==new Date().setHours(0,0,0,0)) 
             {
                 timelineDotElem.className="timeline-dot-current";
+            }
+            else if(nodes[index].time > new Date())
+            {
+                timelineDotElem.className="timeline-dot-future";
             }
         }
         else

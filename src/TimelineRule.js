@@ -13,7 +13,6 @@ module.exports = {
           }
           try {
             var contentHtml = markdownIt.utils.escapeHtml(token.content);
-            console.info(contentHtml);
           } catch (e) {
             var contentHtml = {};
           }

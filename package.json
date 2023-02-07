@@ -1,12 +1,12 @@
 {
-  "name": "joplin-plugin-TimelineRender",
-  "version": "1.0.0",
+  "name": "joplin-plugin-timelinerender",
+  "version": "1.0.2",
   "scripts": {
     "dist": "webpack --joplin-plugin-config buildMain && webpack --joplin-plugin-config buildExtraScripts && webpack --joplin-plugin-config createArchive",
     "prepare": "npm run dist",
     "update": "npm install -g generator-joplin && yo joplin --update"
   },
-  "license": "MIT",
+  "license": "GPL",
   "keywords": [
     "joplin-plugin"
   ],
