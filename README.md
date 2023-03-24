@@ -63,4 +63,6 @@ GPL
 # Change Log
 ## 1.0.1
 - fix the error of time in different country
-- add the change style chapter to readme.md 
+- add the change style chapter to readme.md
+## 1.0.2
+- fixed the problem of time reduction by one day in some countries

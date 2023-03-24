@@ -25,7 +25,6 @@ function parseContent()
 function timelineNode(time,content)
 {
     this.time=time;
-    this
     this.content=content;
 }
 
@@ -43,6 +42,7 @@ function buildStruct(container,contentList)
         {
             let time="";
             let contents=[]
+            let strArray=[]
             let regExp=new RegExp(/^\d{4}-\d{1,}-\d{1,}/);
             for (let nodeindex = 0; nodeindex < nodes.length; nodeindex++) 
             {
@@ -51,6 +51,16 @@ function buildStruct(container,contentList)
                     let clearContent=nodes[nodeindex].replace(/\s*/g,"");
                     if (regExp.test(clearContent)) 
                     {
+                        strArray=clearContent.split('-');
+                        if(strArray[1].length==1)
+                        {
+                            strArray[1]='0'+strArray[1];
+                        }
+                        if(strArray[2].length==1)
+                        {
+                            strArray[2]='0'+strArray[2];
+                        }
+                        clearContent=strArray[0]+'-'+strArray[1]+'-'+strArray[2];
                         time=new Date(clearContent);
                     }
                     else
