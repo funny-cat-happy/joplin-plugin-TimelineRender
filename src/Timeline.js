@@ -1,4 +1,4 @@
-document.addEventListener('joplin-noteDidUpdate', parseContent);
+// document.addEventListener('joplin-noteDidUpdate', parseContent);
 // window.addEventListener('load', parseContent);
 
 if (/WebKit/i.test(navigator.userAgent)) { // sniff

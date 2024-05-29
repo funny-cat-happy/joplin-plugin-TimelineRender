@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Joplin Plugin",
+            "type": "shell",
+            "command": "npm run dist",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "detail": "Task to build the Joplin plugin"
+        },
+        {
+            "label": "Restart Joplin",
+            "type": "shell",
+            "command": "powershell.exe -ExecutionPolicy Bypass -File ./restart_joplin.ps1",
+            "dependsOn": "Build Joplin Plugin",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
