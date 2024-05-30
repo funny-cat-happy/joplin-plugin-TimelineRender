@@ -9,18 +9,18 @@
     --color: #0d5dff;
   }
   
-  .timeline {
+  .timeline-item {
     position: relative;
     height: auto;
     width: 100%;
   }
-  .timeline::before {
+  .timeline-item::before {
     content: "";
     position: absolute;
     left: var(--left);
     width: 8px;
-    top: 20px;
-    bottom: 6px;
+    top: 15px;
+    bottom: 0px;
     background-image: linear-gradient(
       to bottom,
       rgba(144, 156, 173, 0.2) 60%,

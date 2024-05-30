@@ -1,3 +1,5 @@
 {
-	"extraScripts": ["TimelineRule.ts"]
+	"extraScripts": [
+		"TimelineRule.ts"
+	]
 }

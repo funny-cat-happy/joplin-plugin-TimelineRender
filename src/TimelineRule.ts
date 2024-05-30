@@ -12,34 +12,30 @@ export default function (context) {
 					return defaultRender(tokens, idx, options, env, self)
 				}
 				let content = markdownIt.utils.escapeHtml(token.content)
-				let contentBlock = content.split('\n')
-				let contentNodes = []
-				let contentNode = []
+				let contentBlock = content.split(/\n\s*\n/g)
+				let resultHtml = document.createElement('div')
+				resultHtml.className = 'timeline-container'
 				for (let i = 0; i < contentBlock.length; i++) {
-					if (contentBlock[i] != '') {
-						contentNode.push(contentBlock[i])
-					} else {
-						contentNodes.push(contentNode)
-						contentNode = []
+					let divNode = document.createElement('div')
+					divNode.className = 'timeline-item'
+					let index = contentBlock[i].indexOf('\n')
+					if (index !== -1) {
+						let divDate = document.createElement('div')
+						divDate.className = 'timeline-date'
+						divDate.innerHTML = contentBlock[i].substring(0, index)
+						divNode.appendChild(divDate)
+						let divContent = document.createElement('div')
+						divContent.className = 'timeline-content'
+						divContent.innerHTML = markdownIt.render(contentBlock[i].substring(index + 1))
+						divNode.appendChild(divContent)
+						resultHtml.appendChild(divNode)
 					}
 				}
-				let result = ''
-				for (let i = 0; i < contentNodes.length; i++) {
-					for (let j = 0; j < contentNodes[i].length; j++) {
-						if (j === 0) {
-							result += `<p>${contentNodes[i][j]}</p>`
-						} else {
-							result += markdownIt.render(contentNodes[i][j])
-						}
-					}
-				}
-				return `
-              <div class="timeline-container">${result}</div>
-          `
+				return resultHtml.outerHTML
 			}
 		},
 		assets: function () {
-			return [{ name: 'Timeline.css' }, { name: 'Timeline.js' }]
+			return [{ name: 'Timeline.css' }, { name: 'TimelineRender.js' }]
 		},
 	}
 }
