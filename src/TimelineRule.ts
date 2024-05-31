@@ -21,11 +21,21 @@ export default function (context) {
 					let index = contentBlock[i].indexOf('\n')
 					if (index !== -1) {
 						let divDate = document.createElement('div')
-						divDate.className = 'timeline-date'
-						divDate.innerHTML = contentBlock[i].substring(0, index)
+						let itemDateStr = contentBlock[i].substring(0, index)
+						divDate.className = 'timeline-left'
+						divDate.innerHTML = `<p>${itemDateStr}</p>`
 						divNode.appendChild(divDate)
+						let timelineDotElem = document.createElement('div')
+						timelineDotElem.className = 'timeline-dot-current'
+						const compareResult = compareDate(itemDateStr, _options.settingValue('timeformat'))
+						if (compareResult==='future') {
+							timelineDotElem.className = 'timeline-dot-future'
+						} else if (compareResult==='past') {
+							timelineDotElem.className = 'timeline-dot-past'
+						}
+						divNode.appendChild(timelineDotElem)
 						let divContent = document.createElement('div')
-						divContent.className = 'timeline-content'
+						divContent.className = 'timeline-right'
 						divContent.innerHTML = markdownIt.render(contentBlock[i].substring(index + 1))
 						divNode.appendChild(divContent)
 						resultHtml.appendChild(divNode)
@@ -35,7 +45,28 @@ export default function (context) {
 			}
 		},
 		assets: function () {
-			return [{ name: 'Timeline.css' }, { name: 'TimelineRender.js' }]
+			return [{ name: 'Timeline.css' }]
 		},
+	}
+}
+const compareDate = (date, format) => {
+	try {
+		date = date.split('-')
+		let itemDate: Date
+		if (format === 'YYYY-MM-DD') {
+			itemDate = new Date(Date.UTC(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2])))
+		} else if (format === 'DD-MM-YYYY') {
+			itemDate = new Date(Date.UTC(parseInt(date[2]), parseInt(date[1]) - 1, parseInt(date[0])))
+		}
+		let currentDate = new Date()
+		currentDate = new Date(Date.UTC(currentDate.getUTCFullYear(), currentDate.getUTCMonth(), currentDate.getUTCDate()))
+		if (itemDate > currentDate) {
+			return 'future'
+		} else if (itemDate < currentDate) {
+			return 'past'
+		}
+		return 'current'
+	} catch (error) {
+		return 'current'
 	}
 }

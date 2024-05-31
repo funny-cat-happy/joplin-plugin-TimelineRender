@@ -14,8 +14,8 @@ const registerTimelineMenu = async () => {
 			public: true,
 			label: 'time format',
 			options: {
-				'2023-2-3': '2023-2-3',
-				'3-2-2023': '3-2-2023',
+				'YYYY-MM-DD': 'YYYY-MM-DD',
+				'DD-MM-YYYY': 'DD-MM-YYYY',
 			},
 		},
 	})
