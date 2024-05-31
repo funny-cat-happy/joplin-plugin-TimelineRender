@@ -32,24 +32,9 @@ The block start with \`\`\`timeline,end with \`\`\`
 
 Every node is composed of time and content and is split by space line between different node.
 
-# Change Style
-For example,you want to change the color of dot
+# Plugin Config
+open the menu above Tools->Options->Timeline
 
-open the menu above Tools->Options->Appearance->Show Advanced Settings->Custom stylesheet rendered Markdown
-
-copy the following text to the bottom of the file
-```css
-.timeline-dot-past {
-  background: #148b82;
-}
-.timeline-dot-current {
-  background: #f0a80d;
-}
-.timeline-dot-future {
-  background: #f55104;
-}
-```
-save the file and reboot your joplin
 # Acknowledgements
 Hieu-Thi Luong's Life Calendar plugin,I refer to his code.
 
@@ -57,6 +42,7 @@ Hieu-Thi Luong's Life Calendar plugin,I refer to his code.
 
 Joplin's offical tutorial.
 
+ChatGPT 4o
 # License
 GPL
 
@@ -66,3 +52,6 @@ GPL
 - add the change style chapter to readme.md
 ## 1.0.2
 - fixed the problem of time reduction by one day in some countries
+## 1.1.0
+- add time config menu
+- recover markdown function
